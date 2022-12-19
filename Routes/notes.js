@@ -75,7 +75,7 @@ router.delete('/delete/:id' , Auth , async(req, res) => {
         }
 
 
-        const restNotes = await Notes.find({})
+        const restNotes = await Notes.findById({_id: eq.params._id})
         res.status(200).send(restNotes)
         
     }catch(e) {
@@ -112,7 +112,7 @@ router.patch('/update/:id', Auth, async (req, res) =>{
         updates.forEach( (update) => note[update] = req.body[update])
         await note.save()
 
-        const noteess = await Notes.find({})
+        const noteess = await Notes.findById({_id: eq.params._id})
         res.send(noteess)
     }catch (e) {{
         res.status(400).send(e)
