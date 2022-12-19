@@ -12,7 +12,7 @@ app.use(cors())
 app.use(express.json())
 
 
-const Port = 9000
+const Port = process.env.PORT || 9000
 
 app.use('/user' , userrouter)
 app.use('/user/notes' , notesrouter)
