@@ -35,7 +35,7 @@ router.get('/fetchall' , Auth , async (req, res) => {
 
 
         console.log("sjsb", req.user)
-        const result = await Notes.find({user:req.user})
+        const result = await Notes.find({user:req.user._id})
 
         // res.status(200).send("done")
         res.status(200).json(result)
