@@ -75,7 +75,7 @@ router.delete('/delete/:id' , Auth , async(req, res) => {
         }
 
 
-        const restNotes = await Notes.findById({_id: eq.params._id})
+        const restNotes = await Notes.find({user:req.user._id})
         res.status(200).send(restNotes)
         
     }catch(e) {
@@ -102,7 +102,7 @@ router.patch('/update/:id', Auth, async (req, res) =>{
     }
 
     try{
-        const note = await Notes.findOne( {_id: req.params.id})
+        const note = await Notes.find({user:req.user._id})
         console.log("linw 102" , note)
 
         if (!note) {
@@ -118,6 +118,7 @@ router.patch('/update/:id', Auth, async (req, res) =>{
         res.status(400).send(e)
     }}
 })
+
 
 
 
