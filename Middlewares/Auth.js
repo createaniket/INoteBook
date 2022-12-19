@@ -11,6 +11,7 @@ const Auth = async (req, res, next) =>{
       console.log(" elrbvfeur euh ewuc ueh ufh eu hhhhhhhhh",token)
 
      const decoded = jwt.verify(token, 'aniket')
+     console.log("weibwj", decoded)
 
      const user = await User.findOne({ _id: decoded._id, 'tokens.token': token})
 

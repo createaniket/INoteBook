@@ -17,7 +17,9 @@ router.post('/add', Auth ,  async (req, res) => {
         console.log("notes are here" , note)
         const result = await note.save()
 
-        const nowNotes = await Notes.find({})
+        console.log("qewsrdghjkl", req.user)
+        
+        const nowNotes = await Notes.find({user:req.user._id})
 
         res.status(201).send(nowNotes)
 
@@ -31,7 +33,9 @@ router.post('/add', Auth ,  async (req, res) => {
 router.get('/fetchall' , Auth , async (req, res) => {
     try {
 
-        const result = await Notes.find({})
+
+        console.log("sjsb", req.user)
+        const result = await Notes.find({user:req.user})
 
         // res.status(200).send("done")
         res.status(200).json(result)
